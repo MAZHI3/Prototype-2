@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
+    public float verticalInput;
     public float speed = 10.0f;
     public float xRange = 20;
+
     
     public GameObject projectilePrefab;
 
@@ -22,6 +24,10 @@ public class PlayerController : MonoBehaviour
         //Move left and right
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+
+        //Move up and down
+        verticalInput = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
 
         //Boundary of player
         if (transform.position.x < -xRange) {
